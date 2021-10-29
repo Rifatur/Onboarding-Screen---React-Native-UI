@@ -7,16 +7,19 @@ const {onboarding1,onboarding2,onboarding3} = images;
 
 const onBoardings = [
     {
+        
         title:"Lets Travelling",
         description:"this is Nice place to visit with family or friend this is Nice place to visit with family or friend",
         img: onboarding1,
     },
     {
+       
         title:"Navigation",
         description:"this is Nice place to visit with family or friend  this is Nice place to visit with family or friend",
         img: onboarding2,
     },
     {
+        
         title:"Destination",
         description:" this is Nice place to visit with family or friend this is Nice place to visit with family or friend",
         img: onboarding3,
@@ -67,11 +70,32 @@ const OnBoarding = () => {
         );
     }
 
+    function RenderDots(){
+        return(
+            <View style={{flexDirection:'row',height:SIZES.padding,}}>
+                {onBoardings.map((item, index) =>(
+                   
+                        <View key={`dot-${index}`}  style={[styles.dot,{width:20, height:20}]}>
+
+                        </View>
+                    
+                ))}
+            </View>
+        );
+    }
+
 
   return(
 
       <SafeAreaView style={styles.container}>
-        { renderContent() }
+          <View>
+            { renderContent() }
+          </View>
+
+          <View style={styles.DotRootSection}>
+            {RenderDots()}
+          </View>
+        
       </SafeAreaView>
     
   );
@@ -83,6 +107,16 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
         backgroundColor: COLORS.white,
+    },
+    DotRootSection:{
+        position:'absolute',
+        bottom:SIZES.height > 700 ?'22%':'16%'
+    },
+    dot:{
+        borderRadius:SIZES.radius,
+        backgroundColor:COLORS.secondary,
+        marginHorizontal:SIZES.radius/2,
+        
     }
 })
 
